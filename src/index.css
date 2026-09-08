@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink-rule;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-ink font-body antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    background: #A9803D;
+    color: #F6F2E8;
+  }
+
+  :focus-visible {
+    outline: 2px solid #A9803D;
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto max-w-content px-6 sm:px-8 lg:px-10;
+  }
+
+  .rule-line {
+    @apply border-t border-ivory-rule;
+  }
+
+  .rule-line-dark {
+    @apply border-t border-ink-rule;
+  }
+
+  .label-tag {
+    @apply text-[11px] font-semibold tracking-widest2 uppercase text-brass;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-[2px] bg-ink px-7 py-3.5 text-[13.5px] font-semibold tracking-wide text-ivory transition-colors duration-300 hover:bg-emerald focus-visible:outline-brass;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-[2px] border border-ink/25 px-7 py-3.5 text-[13.5px] font-semibold tracking-wide text-ink transition-colors duration-300 hover:border-ink hover:bg-ink hover:text-ivory;
+  }
+
+  .btn-on-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-[2px] bg-brass px-7 py-3.5 text-[13.5px] font-semibold tracking-wide text-ink transition-colors duration-300 hover:bg-brass-light;
+  }
+}
+
+/* Marquee */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-scroll 38s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+
